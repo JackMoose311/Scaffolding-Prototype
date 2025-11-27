@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import { Router, Response } from 'express';
 import { getDatabase } from '../database';
 import { AuthRequest, authenticateToken } from '../middleware/auth';
+import { config } from '../config';
 
 const router = Router();
 
@@ -33,7 +34,7 @@ router.post('/register', async (req: AuthRequest, res: Response) => {
     );
 
     const userId = result.lastID;
-    const token = jwt.sign({ userId }, process.env.JWT_SECRET || 'secret', {
+    const token = jwt.sign({ userId }, config.JWT_SECRET, {
       expiresIn: '7d',
     });
 
@@ -67,7 +68,7 @@ router.post('/login', async (req: AuthRequest, res: Response) => {
       return res.status(401).json({ error: 'Invalid email or password' });
     }
 
-    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET || 'secret', {
+    const token = jwt.sign({ userId: user.id }, config.JWT_SECRET, {
       expiresIn: '7d',
     });
 

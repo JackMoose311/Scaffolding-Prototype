@@ -9,31 +9,26 @@ const LEVELS = [
     id: '1-2',
     title: 'Turtle Graphics 1-2',
     description: 'Draw a 1x1 square using turtle commands',
-    difficulty: 'Beginner',
   },
   {
     id: '1-3',
     title: 'Turtle Graphics 1-3',
     description: 'Draw a square using only left turns and forward moves',
-    difficulty: 'Beginner',
   },
   {
     id: '1-4',
     title: 'Turtle Graphics 1-4',
     description: 'Draw a 3x3 grid using turtle commands',
-    difficulty: 'Intermediate',
   },
   {
     id: '2-2',
     title: 'Functions 2-2',
     description: 'Define and call a turnAround function',
-    difficulty: 'Intermediate',
   },
   {
     id: '2-3',
     title: 'Functions 2-3',
     description: 'Create a plus sign using functions',
-    difficulty: 'Intermediate',
   },
 ];
 
@@ -65,17 +60,6 @@ export function LevelSelector({ onSelectLevel }: LevelSelectorProps) {
                   : 'bg-slate-800 border-slate-700 hover:border-slate-600'
               }`}
             >
-              {/* Difficulty Badge */}
-              <div
-                className={`inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3 ${
-                  level.difficulty === 'Beginner'
-                    ? 'bg-green-500/20 text-green-300'
-                    : 'bg-orange-500/20 text-orange-300'
-                }`}
-              >
-                {level.difficulty}
-              </div>
-
               {/* Level ID */}
               <h2 className="text-2xl font-bold text-slate-50 mb-2">{level.id}</h2>
 
@@ -101,7 +85,7 @@ export function LevelSelector({ onSelectLevel }: LevelSelectorProps) {
         {/* Footer */}
         <div className="mt-16 text-center">
           <p className="text-slate-500 text-sm">
-            💡 Each level will provide tips, then guide you through your code without giving away the solution
+            Each level will provide tips, then guide you through your code without giving away the solution
           </p>
         </div>
       </div>
